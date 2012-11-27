@@ -31,17 +31,17 @@ class Parser:
     def begin(self):
         if(self.is_first_run):
             self.first_run()
-            print()
-            print("Welcome to {}, {}".format(self.sys_name, self.username))
-            print("Since this is your first logon, usage instructions have been provided at {}".format(self.instruction_loc))
-            print("Enter 'help' for help and a command list.".format(self.instruction_loc))
-            print("Enjoy your stay and use the system responsibly")
-            print()
+            print_data()
+            print_data("Welcome to {}, {}".format(self.sys_name, self.username))
+            print_data("Since this is your first logon, usage instructions have been provided at {}".format(self.instruction_loc))
+            print_data("Enter 'help' for help and a command list.".format(self.instruction_loc))
+            print_data("Enjoy your stay and use the system responsibly")
+            print_data("")
             self.main_loop()
         else:
-            print("Welcome back {}".format(self.username))
-            print("Last logon was on: {} at {}.".format(self.last_logon.strftime("%d/%m/%y"), self.last_logon.strftime("%H:%M:%S")))
-            print()
+            print_data("Welcome back {}".format(self.username))
+            print_data("Last logon was on: {} at {}.".format(self.last_logon.strftime("%d/%m/%y"), self.last_logon.strftime("%H:%M:%S")))
+            print_data("")
             self.main_loop()
             
     def main_loop(self):
@@ -49,15 +49,28 @@ class Parser:
             command = raw_input("> ")
             token_command = self.tokenize(command)
             execute_command(token_command)
+    
+    def tokenize(command):
+        pass
+        
     def execute_command(self, command):
         pass
+        
+    def change_dir(self):
+        pass
+        
+    def read_file(self):
+        pass
+        
+    # lets prepare for a better interface early
+    # This will encapsulate all writing of output
+    # 
+    def print_data(self, toprint)
+        print(toprint)
         
     def logout(self):
         self.last_logon = datetime.datetime.today()
         # write to config?
-        pass
-        
-    def tokenize(command):
         pass
         
     def save(self):
