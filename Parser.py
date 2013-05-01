@@ -5,7 +5,7 @@ import random
 
 def clear(): # not functional
     print(chr(27) + "[2J")
-    
+
 # Maybe have a set of methods for entering username etc before this?
 
 class Parser:
@@ -14,20 +14,20 @@ class Parser:
     is_first_run = True
     instruction_loc = "~/howto"
     sys_name = "HELIOS"
-    
-    def __init__(self):    
+
+    def __init__(self):
         # load state from file
-        
+
         # if that fails, decide it is first run and populate with initial state
         pass
-        
+
     def first_run(self):
         #load_folder_tree(fname):
-        
+
         # set today as last logon date
         self.last_logon = datetime.datetime.today()
         self.is_first_run = False
-    
+
     def begin(self):
         if(self.is_first_run):
             self.first_run()
@@ -43,49 +43,79 @@ class Parser:
             print_data("Last logon was on: {} at {}.".format(self.last_logon.strftime("%d/%m/%y"), self.last_logon.strftime("%H:%M:%S")))
             print_data("")
             self.main_loop()
-            
+
     def main_loop(self):
         while True:
             command = raw_input("> ")
             token_command = self.tokenize(command)
             execute_command(token_command)
-    
+
     def tokenize(command):
         pass
-        
+
     def execute_command(self, command):
         pass
-        
+
     def change_dir(self):
         pass
-        
+
     def read_file(self):
         pass
-        
+
     # lets prepare for a better interface early
     # This will encapsulate all writing of output
-    # 
+    #
     def print_data(self, toprint)
         print(toprint)
-        
+
     def logout(self):
         self.last_logon = datetime.datetime.today()
         # write to config?
         pass
-        
+
     def save(self):
         # Store useful info
         pass
-        
+
     def read_token(self):
         pass
 
     def change_environment(self):
         pass
-        
+
     def load_folder_tree(self):
         pass
-        
+
+    def can_read(self):
+        pass
+
+    # For running programs, gets current state to dispatch
+    def get_context(self):
+        pass
+
+    # COMMANDS
     def help(self):
         pass
-        
+
+    def change_dir(self):
+        pass
+
+    def read_file(self):
+        pass
+
+    #TODO email subprogram
+    def email_prog(self):
+        pass
+    #todo permissions/users/etc
+    def change_user(self):
+        pass
+
+    def change_file_permissions(self):
+        pass
+
+    # Do I even want file creation? will this be useful?
+    def make_file(self):
+        pass
+
+    def del_file(self):
+        pass
